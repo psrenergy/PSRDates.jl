@@ -1,7 +1,7 @@
-# PSRExample.jl
+# PSRDates.jl
 Repositório modelo da PSR para projetos em julia
 
-Importante notar que o PSRExample exige uma variável de ambiente JULIA_185, essa variável de ambiente é uma maneira fácil de garantir que o projeto sempre será rodado com a mesma versão de Julia. Basta setar a variável de ambiente seja em Windows ou Linux.
+Importante notar que o PSRDates exige uma variável de ambiente JULIA_185, essa variável de ambiente é uma maneira fácil de garantir que o projeto sempre será rodado com a mesma versão de Julia. Basta setar a variável de ambiente seja em Windows ou Linux.
 
 Aqui estão alguns exemplos de variável de ambiente que funcionam corretamente **(Importante não ter espaços no path da variável)**
 ```
@@ -35,5 +35,5 @@ O repositório contém alguns scripts que ajudam no desenvolvimento dos modelos.
 
 - test_package - Roda os testes unitários do projeto
 - compile_package - Gera uma imagem compilada do julia com o pacote
-- PSRExample - Roda a main a partir do source code do projeto
+- PSRDates - Roda a main a partir do source code do projeto
 - revise - Inicia uma sessão de Julia usando o Revise.jl

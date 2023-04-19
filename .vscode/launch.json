@@ -7,7 +7,7 @@
         {
             "type": "julia",
             "request": "launch",
-            "name": "Debug PSRExample",
+            "name": "Debug PSRDates",
             "program": "${workspaceFolder}\\main.jl",
             "stopOnEntry": false,
             "cwd": "${workspaceFolder}",
