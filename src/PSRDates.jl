@@ -9,6 +9,7 @@ const EPOCH_DAY = 86400000 # 24 * 60 * 60 * 1000
 
 export 
     PSRDateReference,
+    StageType,
     STAGETYPE_UNKNOWN,
     STAGETYPE_WEEK,
     STAGETYPE_MONTH,
