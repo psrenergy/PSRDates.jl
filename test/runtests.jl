@@ -1,6 +1,6 @@
-using Test
-
+using Dates
 using PSRDates
+using Test
 
 function test_date()
     @test PSRDates.is_leap_year(1700) == false
@@ -27,14 +27,29 @@ function test_date()
     @test PSRDates.year_to_decade(2010) == 2010
     @test PSRDates.year_to_decade(2011) == 2010
 
-    @show PSRDates.date_to_epoch(1, 1, 2000)
-    # @test PSRDates.date_to_epoch(1, 1, 2000) == 946684800000
+    @test PSRDates.date_to_epoch(1, 1, 2000) == 946684800000
+
+    @test PSRDates.epoch_to_datetime(946684800000) == DateTime(2000, 1, 1)
 end
 
 function test_reference()
     reference = PSRDateReference(STAGETYPE_MONTH, 1, 2000)
 
-    # @test PSRDates.epoch(reference, 1) == 946684800000
+    @test PSRDates.epoch(reference, 1) == 946684800000
+
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 2))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 3))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 4))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 5))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 6))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 7))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 8))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 9))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 10))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 11))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 12))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 13))
+    @show PSRDates.stage(reference, PSRDates.epoch(reference, 14))
 end
 
 function test_all()
