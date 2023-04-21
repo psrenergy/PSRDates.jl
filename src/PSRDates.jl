@@ -4,8 +4,8 @@ using Dates
 
 const DAYS_IN_MONTH = Int[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-const EPOCH_WEEK = 604800000 # 7 * 24 * 60 * 60 * 1000
 const EPOCH_DAY = 86400000 # 24 * 60 * 60 * 1000
+const EPOCH_WEEK = 604800000 # 7 * 24 * 60 * 60 * 1000
 
 export 
     PSRDateReference,
@@ -24,8 +24,12 @@ export
     DAYS_IN_MONTH
 
 include("stagetype.jl")
-include("epoch.jl")
 include("date.jl")
 include("reference.jl")
+include("week.jl")
+include("month.jl")
+include("year_day.jl")
+include("year.jl")
+include("decade.jl")
 
 end
