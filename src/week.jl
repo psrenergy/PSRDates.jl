@@ -19,3 +19,14 @@ function epoch_to_week(epoch::Int)
 
     return min(floor(Int, days / 7) + 1, 52)
 end
+
+function stage_to_week(reference::PSRDateReference, stage::Int)
+    current_stage = current_stage(reference, stage)
+    initial_year = reference.initial_year
+
+    year = floor(Int, current_stage / 52.0) + initial_year
+    week = mod(current_stage, 52) + 1
+    return week_to_epoch(week, year)
+    
+    return week, year
+end

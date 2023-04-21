@@ -38,6 +38,10 @@ function test_week()
         year_day = 1
         year_epoch = PSRDates.date_to_epoch(1, 1, year)
 
+        for week in 1:52
+
+        end
+
         for month in 1:12
             for day in 1:DAYS_IN_MONTH[month]
                 week = min(floor(Int, (year_day - 1) / 7) + 1, 52)
@@ -77,7 +81,7 @@ function test_reference()
 end
 
 function test_all()
-    # test_date()
+    test_date()
     test_week()
     # test_reference()
 end
