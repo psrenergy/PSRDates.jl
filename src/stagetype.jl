@@ -11,4 +11,3 @@
     STAGETYPE_YEAR = 10
     STAGETYPE_DECADE = 11
 end
-

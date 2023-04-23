@@ -13,6 +13,6 @@ function stage_to_month(reference::PSRDateReference, stage::Int)
 
     month = mod(current_stage, 12) + 1
     year = floor(Int, current_stage / 12.0) + initial_year
-    
+
     return month, year
 end
