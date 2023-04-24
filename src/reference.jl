@@ -2,6 +2,30 @@ struct PSRDateReference
     stage_type::StageType
     initial_stage::Int
     initial_year::Int
+
+    function PSRDateReference(stage_type::StageType, initial_stage::Int, initial_year::Int)
+        if stage_type == STAGETYPE_WEEK
+            if initial_stage < 1 || initial_stage > 52
+                error("Invalid initial stage")
+            end
+        elseif stage_type == STAGETYPE_MONTH
+            if initial_stage < 1 || initial_stage > 12
+                error("Invalid initial stage")
+            end
+        elseif stage_type == STAGETYPE_YEAR
+            if initial_stage < 1
+                error("Invalid initial stage")
+            end
+        else
+            error("Invalid stage type")
+        end
+
+        return new(stage_type, initial_stage, initial_year)
+    end
+
+    function PSRDateReference(stage_type::StageType, initial_year::Int)
+        return PSRDateReference(stage_type, 1, initial_year)
+    end
 end
 
 function stage_to_epoch(reference::PSRDateReference, stage::Int)
