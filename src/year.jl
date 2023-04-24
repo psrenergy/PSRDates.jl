@@ -13,7 +13,6 @@ end
 
 function stage_to_year(reference::PSRDateReference, stage::Int)
     initial_year = reference.initial_year
-
     year = stage + initial_year - 1
     return year
 end

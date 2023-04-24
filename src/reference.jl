@@ -13,7 +13,7 @@ struct PSRDateReference
                 error("Invalid initial stage")
             end
         elseif stage_type == STAGETYPE_YEAR
-            if initial_stage < 1
+            if initial_stage != 1
                 error("Invalid initial stage")
             end
         else

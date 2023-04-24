@@ -25,7 +25,8 @@ function stage_to_week(reference::PSRDateReference, stage::Int)
     initial_year = reference.initial_year
     current_stage = initial_stage + stage - 2
 
-    year = floor(Int, current_stage / 52.0) + initial_year
     week = mod(current_stage, 52) + 1
+    year = floor(Int, current_stage / 52) + initial_year
+
     return week, year
 end
