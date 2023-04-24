@@ -1,5 +1,5 @@
 function is_leap_year(year::Int)
-    return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+    return Dates.isleapyear(year)
 end
 
 function year_to_epoch(year::Int)
