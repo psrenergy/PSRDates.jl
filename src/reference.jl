@@ -28,6 +28,22 @@ struct PSRDateReference
     end
 end
 
+function stage_to_date(reference::PSRDateReference, stage::Int)
+    stage_type = reference.stage_type
+
+    if stage_type == STAGETYPE_WEEK
+        return stage_to_week(reference, stage)
+    elseif stage_type == STAGETYPE_MONTH
+        return stage_to_month(reference, stage)
+    elseif stage_type == STAGETYPE_YEAR
+        return 1, stage_to_year(reference, stage)
+    else
+        error("Invalid stage type")
+    end
+
+    return 0
+end
+
 function stage_to_epoch(reference::PSRDateReference, stage::Int)
     stage_type = reference.stage_type
 
