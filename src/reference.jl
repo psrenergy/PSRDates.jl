@@ -4,11 +4,6 @@ struct PSRDateReference
     initial_year::Int
 end
 
-function current_stage(reference::PSRDateReference, stage::Int)
-    initial_stage = reference.initial_stage
-    return initial_stage + stage - 2
-end
-
 function stage_to_epoch(reference::PSRDateReference, stage::Int)
     stage_type = reference.stage_type
 

@@ -38,10 +38,6 @@ function test_week()
         year_day = 1
         year_epoch = PSRDates.date_to_epoch(1, 1, year)
 
-        for week in 1:52
-
-        end
-
         for month in 1:12
             for day in 1:DAYS_IN_MONTH[month]
                 week = min(floor(Int, (year_day - 1) / 7) + 1, 52)
@@ -58,32 +54,63 @@ function test_week()
             end
         end
     end
+
+    reference = PSRDateReference(STAGETYPE_WEEK, 2, 2000)
+
+    @test PSRDates.stage_to_week(reference, -2) == (51, 1999)
+    @test PSRDates.stage_to_week(reference, -1) == (52, 1999)
+    @test PSRDates.stage_to_week(reference, 0) == (1, 2000)
+    @test PSRDates.stage_to_week(reference, 1) == (2, 2000)
+    @test PSRDates.stage_to_week(reference, 2) == (3, 2000)
+    @test PSRDates.stage_to_week(reference, 3) == (4, 2000)
+    @test PSRDates.stage_to_week(reference, 50) == (51, 2000)
+    @test PSRDates.stage_to_week(reference, 51) == (52, 2000)
+    @test PSRDates.stage_to_week(reference, 52) == (1, 2001)
+    @test PSRDates.stage_to_week(reference, 53) == (2, 2001)
 end
 
-function test_reference()
-    reference = PSRDateReference(STAGETYPE_MONTH, 1, 2000)
+function test_month()
+    for year in 2000:2005
+        year_day = 1
+        year_epoch = PSRDates.date_to_epoch(1, 1, year)
 
-    @test PSRDates.epoch(reference, 1) == 946684800000
+        for month in 1:12 
+            for day in 1:DAYS_IN_MONTH[month]
+                @test PSRDates.epoch_to_month(PSRDates.date_to_epoch(day, month, year)) == month
 
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 2))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 3))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 4))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 5))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 6))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 7))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 8))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 9))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 10))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 11))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 12))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 13))
-    @show PSRDates.stage(reference, PSRDates.epoch(reference, 14))
+                epoch = year_epoch + sum(DAYS_IN_MONTH[1:(month - 1)]) * PSRDates.EPOCH_DAY
+                if PSRDates.is_leap_year(year) && year_day > 59
+                    epoch += PSRDates.EPOCH_DAY
+                end
+                @test PSRDates.month_to_epoch(month, year) == epoch
+
+                year_day += 1
+            end
+        end
+    end
+
+    reference = PSRDateReference(STAGETYPE_MONTH, 2, 2000)
+
+    @test PSRDates.stage_to_month(reference, -1) == (12, 1999)
+    @test PSRDates.stage_to_month(reference, 0) == (1, 2000)
+    @test PSRDates.stage_to_month(reference, 1) == (2, 2000)
+    @test PSRDates.stage_to_month(reference, 2) == (3, 2000)
+    @test PSRDates.stage_to_month(reference, 3) == (4, 2000)
+    @test PSRDates.stage_to_month(reference, 4) == (5, 2000)
+    @test PSRDates.stage_to_month(reference, 5) == (6, 2000)
+    @test PSRDates.stage_to_month(reference, 6) == (7, 2000)
+    @test PSRDates.stage_to_month(reference, 7) == (8, 2000)
+    @test PSRDates.stage_to_month(reference, 8) == (9, 2000)
+    @test PSRDates.stage_to_month(reference, 9) == (10, 2000)
+    @test PSRDates.stage_to_month(reference, 10) == (11, 2000)
+    @test PSRDates.stage_to_month(reference, 11) == (12, 2000)
+    @test PSRDates.stage_to_month(reference, 12) == (1, 2001)
 end
 
 function test_all()
     test_date()
     test_week()
-    # test_reference()
+    test_month()
 end
 
 test_all()
