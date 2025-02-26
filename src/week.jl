@@ -1,4 +1,4 @@
-function week_to_epoch(week::Int, year::Int)
+function week_to_epoch(week::Integer, year::Integer)
     if week < 10
         return date_to_epoch(1, 1, year) + (week - 1) * EPOCH_WEEK
     else
@@ -6,7 +6,7 @@ function week_to_epoch(week::Int, year::Int)
     end
 end
 
-function epoch_to_week(epoch::Int)
+function epoch_to_week(epoch::Integer)
     datetime = epoch_to_datetime(epoch)
     month = Dates.month(datetime)
     year = Dates.year(datetime)
@@ -20,7 +20,7 @@ function epoch_to_week(epoch::Int)
     return min(floor(Int, days / 7) + 1, 52)
 end
 
-function stage_to_week(reference::PSRDateReference, stage::Int)
+function stage_to_week(reference::PSRDateReference, stage::Integer)
     initial_stage = reference.initial_stage
     initial_year = reference.initial_year
     current_stage = initial_stage + stage - 2

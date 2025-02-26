@@ -1,13 +1,13 @@
-function month_to_epoch(month::Int, year::Int)
+function month_to_epoch(month::Integer, year::Integer)
     return date_to_epoch(1, month, year)
 end
 
-function epoch_to_month(epoch::Int)
+function epoch_to_month(epoch::Integer)
     datetime = epoch_to_datetime(epoch)
     return Dates.month(datetime)
 end
 
-function stage_to_month(reference::PSRDateReference, stage::Int)
+function stage_to_month(reference::PSRDateReference, stage::Integer)
     initial_stage = reference.initial_stage
     initial_year = reference.initial_year
     current_stage = initial_stage + stage - 2
