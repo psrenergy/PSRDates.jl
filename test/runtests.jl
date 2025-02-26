@@ -120,9 +120,9 @@ function test_year()
                 @test PSRDates.epoch_to_year(PSRDates.date_to_epoch(day, month, year)) == year
                 @test PSRDates.year_to_epoch(year) == year_epoch
 
-                for hour in 1:24
-                    year_hour_epoch = year_epoch + (year_day - 1) * PSRDates.EPOCH_DAY + (hour - 1) * PSRDates.EPOCH_HOUR
-                    @test PSRDates.year_hour_to_epoch(year, year_day * 24 + (hour - 1)) == year_hour_epoch
+                for hour in 0:23
+                    year_hour_epoch = year_epoch + (year_day - 1) * PSRDates.EPOCH_DAY + hour * PSRDates.EPOCH_HOUR
+                    @test PSRDates.year_hour_to_epoch(year, (year_day - 1) * 24 + hour) == year_hour_epoch
                 end
 
                 year_day += 1
@@ -154,6 +154,35 @@ function test_decade()
     return nothing
 end
 
+function test_cross()
+    @test PSRDates.year_hour_to_month(1) == 1
+    @test PSRDates.year_hour_to_month(744 + 0) == 1
+    @test PSRDates.year_hour_to_month(744 + 1) == 2
+    @test PSRDates.year_hour_to_month(744 + 672 + 0) == 2
+    @test PSRDates.year_hour_to_month(744 + 672 + 1) == 3
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 0) == 3
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 1) == 4
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 0) == 4
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 1) == 5
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 0) == 5
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 1) == 6
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 0) == 6
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 1) == 7
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 0) == 7
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 1) == 8
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 0) == 8
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 1) == 9
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 0) == 9
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 1) == 10
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 0) == 10
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 1) == 11
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 720 + 0) == 11
+    @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 720 + 1) == 12
+
+
+    return nothing
+end
+
 function test_all()
     # @testset "Aqua" begin
     #     test_aqua()
@@ -177,6 +206,10 @@ function test_all()
 
     @testset "Decade" begin
         test_decade()
+    end
+
+    @testset "Cross" begin
+        test_cross()
     end
 
     return nothing
