@@ -1,6 +1,9 @@
-using Dates
 using PSRDates
+
+using Dates
 using Test
+
+include("aqua.jl")
 
 const EPOCH_2000_01_01 = 946684800000
 
@@ -136,11 +139,31 @@ function test_decade()
 end
 
 function test_all()
-    test_date()
-    test_week()
-    test_month()
-    test_year()
-    test_decade()
+    @testset "Aqua" begin
+        test_aqua()
+    end
+
+    @testset "Date" begin
+        test_date()
+    end
+
+    @testset "Week" begin
+        test_week()
+    end
+
+    @testset "Month" begin
+        test_month()
+    end
+
+    @testset "Year" begin
+        test_year()
+    end
+
+    @testset "Decade" begin
+        test_decade()
+    end
+
+    return nothing
 end
 
 test_all()
