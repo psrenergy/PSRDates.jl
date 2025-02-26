@@ -1,5 +1,6 @@
 using PSRDates
 
+using Aqua
 using Dates
 using Test
 
