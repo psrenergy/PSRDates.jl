@@ -6,6 +6,10 @@ function year_to_epoch(year::Integer)
     return date_to_epoch(1, 1, year)
 end
 
+function year_hour_to_epoch(year::Integer, hour::Integer)
+    return date_to_epoch(1, 1, year) + hour * 3600
+end
+
 function epoch_to_year(epoch::Integer)
     datetime = epoch_to_datetime(epoch)
     return Dates.year(datetime)
