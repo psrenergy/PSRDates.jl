@@ -23,8 +23,9 @@ function test_week()
             for day in 1:DAYS_IN_MONTH[month]
                 week = min(floor(Int, (year_day - 1) / 7) + 1, 52)
 
-                @test PSRDates.epoch_to_week(PSRDates.date_to_epoch(day, month, year)) == week
-                
+                @test PSRDates.epoch_to_week(PSRDates.date_to_epoch(day, month, year)) ==
+                      week
+
                 epoch = year_epoch + (week - 1) * PSRDates.EPOCH_WEEK
                 if PSRDates.is_leap_year(year) && week > 9
                     epoch += PSRDates.EPOCH_DAY
@@ -55,11 +56,12 @@ function test_month()
         year_day = 1
         year_epoch = PSRDates.date_to_epoch(1, 1, year)
 
-        for month in 1:12 
+        for month in 1:12
             for day in 1:DAYS_IN_MONTH[month]
-                @test PSRDates.epoch_to_month(PSRDates.date_to_epoch(day, month, year)) == month
+                @test PSRDates.epoch_to_month(PSRDates.date_to_epoch(day, month, year)) ==
+                      month
 
-                epoch = year_epoch + sum(DAYS_IN_MONTH[1:(month - 1)]) * PSRDates.EPOCH_DAY
+                epoch = year_epoch + sum(DAYS_IN_MONTH[1:(month-1)]) * PSRDates.EPOCH_DAY
                 if PSRDates.is_leap_year(year) && year_day > 59
                     epoch += PSRDates.EPOCH_DAY
                 end
@@ -109,9 +111,10 @@ function test_year()
         year_day = 1
         year_epoch = PSRDates.date_to_epoch(1, 1, year)
 
-        for month in 1:12 
+        for month in 1:12
             for day in 1:DAYS_IN_MONTH[month]
-                @test PSRDates.epoch_to_year(PSRDates.date_to_epoch(day, month, year)) == year
+                @test PSRDates.epoch_to_year(PSRDates.date_to_epoch(day, month, year)) ==
+                      year
                 @test PSRDates.year_to_epoch(year) == year_epoch
 
                 year_day += 1
