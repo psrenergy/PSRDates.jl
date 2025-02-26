@@ -5,4 +5,5 @@ function year_hour_to_month(year_hour::Integer)
         end
     end
     error("Invalid year hour")
+    return nothing
 end

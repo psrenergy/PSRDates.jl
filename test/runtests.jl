@@ -179,14 +179,13 @@ function test_cross()
     @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 720 + 0) == 11
     @test PSRDates.year_hour_to_month(744 + 672 + 744 + 720 + 744 + 720 + 744 + 744 + 720 + 744 + 720 + 1) == 12
 
-
     return nothing
 end
 
 function test_all()
-    # @testset "Aqua" begin
-    #     test_aqua()
-    # end
+    @testset "Aqua" begin
+        test_aqua()
+    end
 
     @testset "Date" begin
         test_date()
