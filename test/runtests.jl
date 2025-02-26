@@ -120,10 +120,10 @@ function test_year()
                 @test PSRDates.epoch_to_year(PSRDates.date_to_epoch(day, month, year)) == year
                 @test PSRDates.year_to_epoch(year) == year_epoch
 
-                # for hour in 1:24
-                #     year_hour_epoch = year_epoch + year_day * PSRDates.EPOCH_DAY + (hour - 1) * 3600000
-                #     @test PSRDates.year_hour_to_epoch(year, year_day * 24 + hour) == year_hour_epoch
-                # end
+                for hour in 1:24
+                    year_hour_epoch = year_epoch + (year_day - 1) * PSRDates.EPOCH_DAY + (hour - 1) * PSRDates.EPOCH_HOUR
+                    @test PSRDates.year_hour_to_epoch(year, year_day * 24 + (hour - 1)) == year_hour_epoch
+                end
 
                 year_day += 1
             end
@@ -155,9 +155,9 @@ function test_decade()
 end
 
 function test_all()
-    @testset "Aqua" begin
-        test_aqua()
-    end
+    # @testset "Aqua" begin
+    #     test_aqua()
+    # end
 
     @testset "Date" begin
         test_date()

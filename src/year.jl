@@ -7,7 +7,7 @@ function year_to_epoch(year::Integer)
 end
 
 function year_hour_to_epoch(year::Integer, hour::Integer)
-    return date_to_epoch(1, 1, year) + hour * 3600
+    return date_to_epoch(1, 1, year) + (hour - 1) * EPOCH_HOUR
 end
 
 function epoch_to_year(epoch::Integer)
