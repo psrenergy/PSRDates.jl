@@ -20,7 +20,7 @@ function epoch_to_week(epoch::Integer)
     return min(floor(Int, days / 7) + 1, 52)
 end
 
-function stage_to_week(reference::PSRDateReference, stage::Integer)
+function stage_to_week(reference::DateReference, stage::Integer)
     initial_stage = reference.initial_stage
     initial_year = reference.initial_year
     current_stage = initial_stage + stage - 2

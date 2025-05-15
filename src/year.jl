@@ -15,7 +15,7 @@ function epoch_to_year(epoch::Integer)
     return Dates.year(datetime)
 end
 
-function stage_to_year(reference::PSRDateReference, stage::Integer)
+function stage_to_year(reference::DateReference, stage::Integer)
     initial_year = reference.initial_year
     year = stage + initial_year - 1
     return year

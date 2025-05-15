@@ -12,7 +12,7 @@ const EPOCH_DAY = 24 * EPOCH_HOUR
 const EPOCH_WEEK = 7 * EPOCH_DAY
 
 export
-    PSRDateReference,
+    DateReference,
     StageType,
     DAYS_IN_MONTH
 
@@ -23,6 +23,7 @@ include("week.jl")
 include("month.jl")
 include("year.jl")
 include("decade.jl")
+include("hour.jl")
 include("cross.jl")
 
 end

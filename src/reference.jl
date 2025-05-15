@@ -1,9 +1,9 @@
-struct PSRDateReference
+struct DateReference
     stage_type::StageType.T
     initial_stage::Int
     initial_year::Int
 
-    function PSRDateReference(stage_type::StageType.T, initial_stage::Integer, initial_year::Integer)
+    function DateReference(stage_type::StageType.T, initial_stage::Integer, initial_year::Integer)
         if stage_type == StageType.WEEK
             if initial_stage < 1 || initial_stage > 52
                 error("Invalid initial stage")
@@ -23,12 +23,12 @@ struct PSRDateReference
         return new(stage_type, initial_stage, initial_year)
     end
 
-    function PSRDateReference(stage_type::StageType.T, initial_year::Integer)
-        return PSRDateReference(stage_type, 1, initial_year)
+    function DateReference(stage_type::StageType.T, initial_year::Integer)
+        return DateReference(stage_type, 1, initial_year)
     end
 end
 
-function stage_to_date(reference::PSRDateReference, stage::Integer)
+function stage_to_date(reference::DateReference, stage::Integer)
     stage_type = reference.stage_type
 
     if stage_type == StageType.WEEK
@@ -44,7 +44,7 @@ function stage_to_date(reference::PSRDateReference, stage::Integer)
     return 0
 end
 
-function stage_to_epoch(reference::PSRDateReference, stage::Integer)
+function stage_to_epoch(reference::DateReference, stage::Integer)
     stage_type = reference.stage_type
 
     if stage_type == StageType.WEEK
@@ -63,7 +63,7 @@ function stage_to_epoch(reference::PSRDateReference, stage::Integer)
     return 0
 end
 
-function epoch_to_stage(reference::PSRDateReference, epoch::Integer)
+function epoch_to_stage(reference::DateReference, epoch::Integer)
     stage_type = reference.stage_type
 
     if stage_type == StageType.WEEK
