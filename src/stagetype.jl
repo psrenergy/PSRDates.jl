@@ -1,13 +1,8 @@
-@enum StageType begin
-    STAGETYPE_UNKNOWN = 0
-    STAGETYPE_WEEK = 1
-    STAGETYPE_MONTH = 2
-    STAGETYPE_3MONTHS = 3
-    STAGETYPE_DAY = 5
-    STAGETYPE_13MONTHS = 6
-    STAGETYPE_2MONTHS = 7
-    STAGETYPE_4MONTHS = 8
-    STAGETYPE_6MONTHS = 9
-    STAGETYPE_YEAR = 10
-    STAGETYPE_DECADE = 11
+@enumx StageType begin
+    UNKNOWN = 0
+    WEEK = 1
+    MONTH = 2
+    DAY = 5
+    YEAR = 10
+    DECADE = 11
 end

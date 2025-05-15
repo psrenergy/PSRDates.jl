@@ -38,7 +38,7 @@ function test_week()
         end
     end
 
-    reference = PSRDateReference(STAGETYPE_WEEK, 2, 2000)
+    reference = PSRDateReference(StageType.WEEK, 2, 2000)
 
     @test PSRDates.stage_to_week(reference, -2) == (51, 1999)
     @test PSRDates.stage_to_week(reference, -1) == (52, 1999)
@@ -74,7 +74,7 @@ function test_month()
         end
     end
 
-    reference = PSRDateReference(STAGETYPE_MONTH, 2, 2000)
+    reference = PSRDateReference(StageType.MONTH, 2, 2000)
 
     @test PSRDates.stage_to_month(reference, -1) == (12, 1999)
     @test PSRDates.stage_to_month(reference, 0) == (1, 2000)
@@ -133,7 +133,7 @@ function test_year()
         @test PSRDates.epoch_to_year(year_epoch) == year
     end
 
-    reference = PSRDateReference(STAGETYPE_YEAR, 2000)
+    reference = PSRDateReference(StageType.YEAR, 2000)
 
     @test PSRDates.stage_to_year(reference, -1) == 1998
     @test PSRDates.stage_to_year(reference, 0) == 1999

@@ -1,13 +1,15 @@
 name = "PSRDates"
 uuid = "0b292b47-0876-4319-b6bc-6a18552db160"
-version = "0.2.0"
+version = "0.3.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+EnumX = "4e289a0a-7415-4d19-859d-a7e5c4648b56"
 
 [compat]
 Aqua = "0.7 - 0.8"
 Dates = "1.9 - 1.11"
+EnumX = "1.0"
 Test = "1.9 - 1.11"
 julia = "1"
 
